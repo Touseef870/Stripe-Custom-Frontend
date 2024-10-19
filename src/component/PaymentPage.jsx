@@ -69,7 +69,7 @@ const PaymentPage = () => {
 
         if (error) {
             console.error('Payment error:', error.message);
-            setError('Payment Already Paid.');
+            setError('Card details are invalid!.');
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Call your backend to update the session status
             try {
