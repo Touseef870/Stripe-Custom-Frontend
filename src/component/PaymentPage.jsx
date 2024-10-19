@@ -70,7 +70,7 @@ const PaymentPage = () => {
             console.error('Payment error:', error.message);
             setError('Payment Already Paid.');
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-            alert('Payment successful!');
+            // alert('Payment successful!');
             navigate('/success');
         }
     };
