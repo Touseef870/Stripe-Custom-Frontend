@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CheckCircleIcon } from '@heroicons/react/16/solid';
-
 
 // Load Stripe
 const stripePromise = loadStripe('pk_test_51Q5CQjBSRlxFwzyWZZr67eMkwml3WUCZdRg4bcW5mtBx1NffoI3wDxNJ7QPAzEVUczP8ntAnMPmlDYeTyWEBpjl100xLHDUUps');
@@ -74,7 +72,7 @@ const PaymentPage = () => {
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Call your backend to update the session status
             try {
-                const response = await fetch('https://stripe-backend-teal.vercel.app/payment-success', {
+                const response = await fetch('http://localhost:5000/payment-success', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -98,13 +96,13 @@ const PaymentPage = () => {
 
 
     if (loading) return (
-        <div class="flex justify-center items-center h-screen">
-            <div class="animate-spin rounded-full h-24 w-24 border-t-4 border-blue-500 border-solid"></div>
+        <div className="flex justify-center items-center h-screen">
+            <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-blue-500 border-solid"></div>
         </div>
 
     )
 
-    console.log(productDetails);
+    console.log("productDetails=>", productDetails);
 
 
 
@@ -181,14 +179,15 @@ const PaymentPage = () => {
             ) : (
                 <div className="flex items-center justify-center min-h-screen bg-gray-100">
                     <div className="bg-white shadow-lg rounded-lg p-6 max-w-md text-center">
-                        <div className="flex items-center justify-center mb-4">
-                            <CheckCircleIcon className="h-10 w-10 text-green-500 mr-2" />
+                        <div className="flex items-center flex-col justify-center mb-4">
+                        <img className="w-56 h-56 rounded-lg mb-4" src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" />
                             <p className="text-xl font-semibold text-gray-800">
                                 You have already completed your payment.
                             </p>
                         </div>
                     </div>
                 </div>
+
             )}
         </div>
 
