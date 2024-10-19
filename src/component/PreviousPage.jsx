@@ -83,7 +83,6 @@ const PreviousPage = () => {
 
                     if (data.url) {
                         setURL(data.url);
-                        useNavigate(data.url)
                     } else {
                         console.log('Payment URL not found in the response');
                     }
