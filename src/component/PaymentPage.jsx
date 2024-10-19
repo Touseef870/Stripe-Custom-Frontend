@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
 import { useParams, useNavigate } from 'react-router-dom';
+import { CheckCircleIcon } from '@heroicons/react/16/solid';
+
 
 // Load Stripe
 const stripePromise = loadStripe('pk_test_51Q5CQjBSRlxFwzyWZZr67eMkwml3WUCZdRg4bcW5mtBx1NffoI3wDxNJ7QPAzEVUczP8ntAnMPmlDYeTyWEBpjl100xLHDUUps');
@@ -177,8 +179,15 @@ const PaymentPage = () => {
                     </div>
                 </>
             ) : (
-                <div className="text-center text-red-600 border-2 border-red-600 p-4 mt-10 max-w-md mx-auto text-xl font-semibold">
-                    Your link has been expired
+                <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                    <div className="bg-white shadow-lg rounded-lg p-6 max-w-md text-center">
+                        <div className="flex items-center justify-center mb-4">
+                            <CheckCircleIcon className="h-10 w-10 text-green-500 mr-2" />
+                            <p className="text-xl font-semibold text-gray-800">
+                                You have already completed your payment.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
