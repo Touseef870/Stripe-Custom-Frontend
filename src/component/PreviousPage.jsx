@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAg1FK5Kxv3CTb8SM4BadYdSEDE-lNOLJo",
@@ -33,6 +36,7 @@ const PreviousPage = () => {
     const [liveImg, setLiveImg] = useState(null);
     const [URL, setURL] = useState('');
     const [isProcessing, setIsProcessing] = useState(false); // Add this line
+    const [isCopied, setIsCopied] = useState(false);
 
     const brandData = {
         title: brandTitle,
@@ -104,6 +108,10 @@ const PreviousPage = () => {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(URL);
+        setIsCopied(true);
+        setTimeout(() => {
+            setIsCopied(false);
+        }, 2000); // Reset after 2 seconds
     };
 
     const handleRedirect = () => {
@@ -112,25 +120,6 @@ const PreviousPage = () => {
 
     return (
         <>
-            {URL && (
-                <div className="flex justify-center items-center my-5 space-x-4">
-                    <h3 className="text-xl font-bold text-center">{URL}</h3>
-                    <button onClick={handleCopy} className="hover:opacity-75">
-                        <img
-                            src="https://w7.pngwing.com/pngs/592/864/png-transparent-computer-icons-icon-design-cut-copy-and-paste-taobao-clothing-promotional-copy-text-rectangle-emoticon-thumbnail.png"
-                            alt="Copy"
-                            className="w-6 h-6"
-                        />
-                    </button>
-                    <button onClick={handleRedirect} className="hover:opacity-75">
-                        <img
-                            src="https://w7.pngwing.com/pngs/808/964/png-transparent-right-arrow-arrow-rotation-curve-curved-arrow-tool-angle-text-monochrome-thumbnail.png"
-                            alt="Go"
-                            className="w-6 h-6"
-                        />
-                    </button>
-                </div>
-            )}
 
             <form className="max-w-4xl mx-auto mt-10 border p-5 rounded-xl bg-white shadow-lg" onSubmit={handlePayment}>
                 <h2 className="text-4xl underline font-bold mb-8 text-center text-gray-800">
@@ -240,6 +229,28 @@ const PreviousPage = () => {
                     {isProcessing ? 'Processing...' : 'Process'} {/* Change button text */}
                 </button>
             </form>
+
+            {URL && (
+                 <div className="flex flex-col justify-center items-center mx-auto my-5 space-y-4 bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+                 <h3 className="text-xl font-bold text-gray-800 text-center break-all">{URL}</h3>
+                 <div className="flex space-x-4">
+                   <button 
+                     onClick={handleCopy} 
+                     className="hover:bg-gray-100 p-3 rounded-full transition duration-200 flex items-center"
+                   >
+                     <FontAwesomeIcon icon={faCopy} className="w-6 h-6 text-blue-600" />
+                     {isCopied && <span className="ml-2 text-green-500">Copied</span>}
+                   </button>
+                   <button 
+                     onClick={handleRedirect} 
+                     className="hover:bg-gray-100 p-3 rounded-full transition duration-200 flex items-center"
+                   >
+                     <FontAwesomeIcon icon={faSquareUpRight} className="w-6 h-6 text-blue-600" />
+                   </button>
+                 </div>
+               </div>
+            )}
+
         </>
     );
 };
