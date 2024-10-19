@@ -72,7 +72,7 @@ const PreviousPage = () => {
             console.log(updatedBrandData);
 
             try {
-                const paymentResponse = await fetch('http://localhost:5000/create-payment-session', {
+                const paymentResponse = await fetch('https://stripe-backend-teal.vercel.app/create-payment-session', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(updatedBrandData),
