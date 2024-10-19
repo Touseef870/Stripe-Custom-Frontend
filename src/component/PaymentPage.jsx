@@ -70,10 +70,30 @@ const PaymentPage = () => {
             console.error('Payment error:', error.message);
             setError('Payment Already Paid.');
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-            // alert('Payment successful!');
-            navigate('/success');
+            // Call your backend to update the session status
+            try {
+                const response = await fetch('http://localhost:5000/payment-success', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ sessionId }), // Pass sessionId from useParams
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to update payment status');
+                }
+
+                const result = await response.json();
+                if (result.success) {
+                    navigate('/success'); // Redirect to success page after updating session status
+                }
+            } catch (err) {
+                console.error('Error updating payment status:', err);
+            }
         }
     };
+
 
     if (loading) return (
         <div class="flex justify-center items-center h-screen">
@@ -157,7 +177,9 @@ const PaymentPage = () => {
                     </div>
                 </>
             ) : (
-                <p className="text-gray-500 text-center">No product details available.</p>
+                <div className="text-center text-red-600 border-2 border-red-600 p-4 mt-10 max-w-md mx-auto text-xl font-semibold">
+                    Your link has been expired
+                </div>
             )}
         </div>
 
