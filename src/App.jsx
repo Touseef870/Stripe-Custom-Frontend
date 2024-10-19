@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-// import Success from './component/Success';
+import Success from './component/Success';
 import PreviousPage from './component/PreviousPage';
 import PaymentPage from './component/PaymentPage';
 
@@ -18,7 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<PreviousPage />} />
           <Route path="/payment/:sessionId" element={<PaymentPage />} />
-          {/* <Route path="/success" element={<Success/>} /> */}
+          <Route path="/success" element={<Success/>} />
           {/* Add other routes here */}
         </Routes>
       </Router>

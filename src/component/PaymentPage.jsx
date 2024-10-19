@@ -21,7 +21,7 @@ const PaymentPage = () => {
     useEffect(() => {
         const fetchPaymentDetails = async () => {
             try {
-                const response = await fetch(`https://stripecustombackend.netlify.app/get-payment-details/${sessionId}`);
+                const response = await fetch(`https://stripe-backend-teal.vercel.app/get-payment-details/${sessionId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -68,17 +68,22 @@ const PaymentPage = () => {
 
         if (error) {
             console.error('Payment error:', error.message);
-            setError('Payment failed. Invalid Card Detail.');
+            setError('Payment Already Paid.');
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             alert('Payment successful!');
             navigate('/success');
         }
     };
 
-    if (loading) return <p>Loading payment details...</p>;
-    if (error) {
-        return <p className="text-red-600 text-center">{error}</p>;
-    }
+    if (loading) return (
+        <div class="flex justify-center items-center h-screen">
+            <div class="animate-spin rounded-full h-24 w-24 border-t-4 border-blue-500 border-solid"></div>
+        </div>
+
+    )
+
+    console.log(productDetails);
+
 
 
     return (
@@ -105,13 +110,13 @@ const PaymentPage = () => {
                         </div>
 
                         <div className='flex-1'>
-                            {error && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{error}</p>}
                             {/* Stripe Card Form */}
                             <form onSubmit={handleSubmit} className="space-y-6 border border-gray-300 p-6 rounded-lg shadow-lg bg-white transition-transform duration-300">
                                 <div className="bg-white p-5 rounded-lg shadow">
                                     <label className="block mb-2 font-semibold text-gray-700">Card Number</label>
                                     <CardNumberElement className="w-full border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
                                 </div>
+                                {error && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{error}</p>}
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="bg-white p-5 rounded-lg shadow">
