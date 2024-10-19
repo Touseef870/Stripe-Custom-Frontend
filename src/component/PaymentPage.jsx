@@ -72,7 +72,7 @@ const PaymentPage = () => {
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Call your backend to update the session status
             try {
-                const response = await fetch('http://localhost:5000/payment-success', {
+                const response = await fetch('https://stripe-backend-teal.vercel.app/payment-success', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
