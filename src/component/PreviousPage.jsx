@@ -91,7 +91,7 @@ const PreviousPage = () => {
             if (paymentResponse.ok) {
                 const res = await paymentResponse.json();
                 if (res.data.data.sessionId) {
-                    setURL(`http://localhost:5173/payment/${res.data.data.sessionId}`);
+                    setURL(`https://stripe-form-frontend.vercel.app/payment/${res.data.data.sessionId}`);
                     Swal.fire({
                         title: "Good job!",
                         text: "Successfully Generated Link",
