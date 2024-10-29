@@ -375,7 +375,7 @@ const PreviousPage = () => {
 
 
     return (
-        <form className="max-w-4xl w-full mx-auto mt-12 p-10 rounded-2xl bg-blue-950 text-white shadow-xl transition-all duration-300" onSubmit={handlePayment}>
+        <form className="max-w-4xl w-full mx-auto mt-12 p-10 rounded-2xl bg-white text-white shadow-xl transition-all duration-300" onSubmit={handlePayment}>
             <h2 className="text-4xl font-extrabold mb-8 text-center tracking-wide">Select Brand</h2>
 
             <div className="mb-8">
