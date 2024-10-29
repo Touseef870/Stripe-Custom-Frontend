@@ -375,14 +375,14 @@ const PreviousPage = () => {
 
 
     return (
-        <form className="max-w-4xl w-full mx-auto mt-12 p-10 rounded-2xl bg-white text-white shadow-xl transition-all duration-300" onSubmit={handlePayment}>
-            <h2 className="text-4xl font-extrabold mb-8 text-center tracking-wide">Select Brand</h2>
+        <form className="max-w-4xl w-full mx-auto mt-12 p-10 rounded-2xl bg-white text-black shadow-xl transition-all duration-300" onSubmit={handlePayment}>
+            <h2 className="text-4xl font-extrabold mb-8 text-center tracking-wide text-black">Select Brand</h2>
 
             <div className="mb-8">
-                <label className="block text-sm font-medium mb-3">Brand</label>
+                <label className="block text-sm font-medium mb-3 text-black">Brand</label>
                 <select
                     onChange={handleBrandSelect}
-                    className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                     required
                 >
                     <option value="">Select a brand</option>
@@ -393,69 +393,69 @@ const PreviousPage = () => {
             </div>
 
             {selectedBrand && (
-                <div className="mb-8 bg-white p-5 rounded-lg border border-gray-300 shadow-md">
+                <div className="mb-8 bg-gray-100 p-5 rounded-lg border border-gray-300 shadow-md">
                     <img src={selectedBrand.url} alt="Brand Logo" className="h-52 w-auto mx-auto rounded-lg bg-black" />
-                    <h3 className="text-2xl font-semibold text-center pt-4 text-gray-900">{selectedBrand.title}</h3>
+                    <h3 className="text-2xl font-semibold text-center pt-4 text-black">{selectedBrand.title}</h3>
                 </div>
             )}
 
             <div className="mb-6">
-                <label className="block text-sm font-medium mb-3">Description</label>
+                <label className="block text-sm font-medium mb-3 text-black">Description</label>
                 <textarea
                     placeholder="Enter Your Product Description"
                     value={productDesc}
-                    className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                     rows="4"
                     onChange={(e) => setProductDesc(e.target.value)}
                 ></textarea>
             </div>
 
             <div className="mb-8">
-                <label className="block text-sm font-medium mb-3">Amount (USD)</label>
+                <label className="block text-sm font-medium mb-3 text-black">Amount (USD)</label>
                 <input
                     type="number"
                     placeholder="Enter amount"
                     value={brandAmount}
                     onChange={(e) => setBrandAmount(e.target.value)}
-                    className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                     required
                 />
             </div>
 
-            <h2 className="text-4xl font-extrabold mb-8 text-center tracking-wide">Client Details</h2>
+            <h2 className="text-4xl font-extrabold mb-8 text-center tracking-wide text-black">Client Details</h2>
             <div className="mb-10 flex flex-col gap-8">
                 <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1">
-                        <label className="block text-sm font-medium mb-3">Client Name</label>
+                        <label className="block text-sm font-medium mb-3 text-black">Client Name</label>
                         <input
                             type="text"
                             placeholder="Enter client name"
                             value={clientName}
                             onChange={(e) => setClientName(e.target.value)}
-                            className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                             required
                         />
                     </div>
                     <div className="flex-1">
-                        <label className="block text-sm font-medium mb-3">Client Number</label>
+                        <label className="block text-sm font-medium mb-3 text-black">Client Number</label>
                         <input
                             type="number"
                             placeholder="Enter client number"
                             value={clientNum}
                             onChange={(e) => setClientNum(e.target.value)}
-                            className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                             required
                         />
                     </div>
                 </div>
                 <div className="flex-1">
-                    <label className="block text-sm font-medium mb-3">Client Email</label>
+                    <label className="block text-sm font-medium mb-3 text-black">Client Email</label>
                     <input
                         type="email"
                         placeholder="Enter client email"
                         value={clientEmail}
                         onChange={(e) => setClientEmail(e.target.value)}
-                        className="w-full p-4 border border-gray-400 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                         required
                     />
                 </div>
@@ -463,7 +463,7 @@ const PreviousPage = () => {
 
             <button
                 type="submit"
-                className={`w-full py-4 bg-green-600 rounded-lg font-semibold text-white hover:bg-green-700 transition ease-in-out duration-200 ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''} ${linkGenerated ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`w-full py-4 bg-black rounded-lg font-semibold text-white hover:bg-gray-800 transition ease-in-out duration-200 ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''} ${linkGenerated ? 'opacity-50 cursor-not-allowed' : ''}`}
                 disabled={isProcessing || linkGenerated}
             >
                 {isProcessing ? <Loader text={'Processing...'} /> : "Process"}
@@ -471,12 +471,12 @@ const PreviousPage = () => {
 
             {linkGenerated && (
                 <div className="mt-8 flex flex-col items-center">
-                    <p className="text-sm">Payment Link Generated!</p>
+                    <p className="text-sm text-black">Payment Link Generated!</p>
                     <div className="flex items-center mt-4 space-x-4">
-                        <button onClick={handleCopy} className="p-3 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition duration-200">
+                        <button onClick={handleCopy} className="p-3 bg-gray-300 text-black rounded-lg hover:bg-gray-400 transition duration-200">
                             <FontAwesomeIcon icon={faCopy} /> {isCopied ? "Copied!" : "Copy Link"}
                         </button>
-                        <button onClick={handleRedirect} className="p-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition duration-200">
+                        <button onClick={handleRedirect} className="p-3 bg-black text-white rounded-lg hover:bg-gray-800 transition duration-200">
                             <FontAwesomeIcon icon={faSquareUpRight} /> Open Link
                         </button>
                     </div>
