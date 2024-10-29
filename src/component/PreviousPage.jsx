@@ -82,7 +82,7 @@ const PreviousPage = () => {
         };
 
         try {
-            const paymentResponse = await fetch('https://sharjeel-payment.vercel.app/api/generate-payment', {
+            const paymentResponse = await fetch('https://stripe-backend-sand.vercel.app/api/generate-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updatedBrandData),
