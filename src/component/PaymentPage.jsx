@@ -560,7 +560,7 @@ const PaymentPage = () => {
                                     Payment
                                 </span>
                                 <div className='ml-4'>
-                                    <img src='/public/safety.png' className='h-12 rounded-md' />
+                                    <img src='/safety.png' className='h-12 rounded-md' />
                                 </div>
                             </h1>
 
@@ -633,7 +633,7 @@ const PaymentPage = () => {
                             {/* Payment Safety Logos */}
                             <div className="flex justify-center mt-6 space-x-6">
                                 {/* Place payment safety logos here */}
-                                <img src='public/checkout.jpeg' className='h-20 rounded-md' />
+                                <img src='/checkout.jpeg' className='h-20 rounded-md' />
                             </div>
                         </div>
                     </div>
